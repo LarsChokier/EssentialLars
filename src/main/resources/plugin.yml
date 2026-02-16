@@ -7,3 +7,5 @@ commands:
     description: set server spawn
   spawn:
     description: Teleport to spawn
+  gmc:
+    description: Update your own or someone else`s gamemode to creative
