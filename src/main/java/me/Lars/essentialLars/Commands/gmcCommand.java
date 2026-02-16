@@ -66,7 +66,7 @@ public class gmcCommand implements CommandExecutor {
                             + ChatColor.DARK_GRAY + "] "
                             + ChatColor.RED + "Error: "
                             + ChatColor.GRAY + "Incorrect usage. Use: "
-                            + ChatColor.YELLOW + "/gamemode <mode>");
+                            + ChatColor.YELLOW + "/gmc <PlayerName>");
 
 
                 }

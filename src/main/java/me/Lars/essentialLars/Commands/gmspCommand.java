@@ -8,9 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class gmsCommand implements CommandExecutor {
-
-
+public class gmspCommand implements CommandExecutor {
 
 
     @Override
@@ -21,13 +19,13 @@ public class gmsCommand implements CommandExecutor {
 
             if (args.length == 0){
 
-                player.setGameMode(GameMode.SURVIVAL);
+                player.setGameMode(GameMode.SPECTATOR);
                 player.sendMessage(ChatColor.DARK_GRAY + "["
                         + ChatColor.AQUA + "Server"
                         + ChatColor.DARK_GRAY + "] "
                         + ChatColor.GREEN + "Success: "
                         + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "survival"
+                        + ChatColor.YELLOW + "spectator"
                         + ChatColor.GRAY + ".");
 
             }else if (args.length == 1){
@@ -36,7 +34,7 @@ public class gmsCommand implements CommandExecutor {
 
                 Player target = Bukkit.getPlayer(playerName);
 
-                target.setGameMode(GameMode.SURVIVAL);
+                target.setGameMode(GameMode.SPECTATOR);
 
 
                 player.sendMessage(ChatColor.DARK_GRAY + "["
@@ -46,7 +44,7 @@ public class gmsCommand implements CommandExecutor {
                         + ChatColor.GRAY + "You changed "
                         + ChatColor.YELLOW + target.getName()
                         + ChatColor.GRAY + "'s gamemode to "
-                        + ChatColor.YELLOW + "survival"
+                        + ChatColor.YELLOW + "spectator"
                         + ChatColor.GRAY + ".");
 
                 target.sendMessage(ChatColor.DARK_GRAY + "["
@@ -54,7 +52,7 @@ public class gmsCommand implements CommandExecutor {
                         + ChatColor.DARK_GRAY + "] "
                         + ChatColor.GREEN + "Success: "
                         + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "survival"
+                        + ChatColor.YELLOW + "spectator"
                         + ChatColor.GRAY + " by "
                         + ChatColor.YELLOW + player.getName()
                         + ChatColor.GRAY + ".");
@@ -66,7 +64,7 @@ public class gmsCommand implements CommandExecutor {
                         + ChatColor.DARK_GRAY + "] "
                         + ChatColor.RED + "Error: "
                         + ChatColor.GRAY + "Incorrect usage. Use: "
-                        + ChatColor.YELLOW + "/gms <PlayerName>");
+                        + ChatColor.YELLOW + "/gmsp <PlayerName>");
 
 
             }

@@ -2,10 +2,38 @@ name: EssentialLars
 version: '1.0-SNAPSHOT'
 main: me.Lars.essentialLars.EssentialLars
 api-version: '1.21'
+
 commands:
   setspawn:
-    description: set server spawn
+    description: Set the server spawn
+    usage: "/setspawn"
+    permission: EssentialLars.spawn.set
+
   spawn:
     description: Teleport to spawn
+    usage: "/spawn"
+    permission: EssentialLars.spawn.use
+
   gmc:
-    description: Update your own or someone else`s gamemode to creative
+    description: Update your own or someone else's gamemode to creative
+    usage: "/gmc [player]"
+    aliases: [gm1]
+    permission: EssentialLars.gamemode.creative
+
+  gms:
+    description: Update your own or someone else's gamemode to survival
+    usage: "/gms [player]"
+    aliases: [gm0]
+    permission: EssentialLars.gamemode.survival
+
+  gma:
+    description: Update your own or someone else's gamemode to adventure
+    usage: "/gma [player]"
+    aliases: [gm2]
+    permission: EssentialLars.gamemode.adventure
+
+  gmsp:
+    description: Update your own or someone else's gamemode to spectator
+    usage: "/gmsp [player]"
+    aliases: [gm3]
+    permission: EssentialLars.gamemode.spectator
