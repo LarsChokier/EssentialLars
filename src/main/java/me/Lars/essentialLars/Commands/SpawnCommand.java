@@ -28,11 +28,20 @@ public class SpawnCommand implements CommandExecutor {
             if (location != null){
 
                 player.teleport(location);
-                player.sendMessage(ChatColor.GOLD + "You have been teleported to spawn point!");
+                player.sendMessage(ChatColor.DARK_GRAY + "["
+                        + ChatColor.AQUA + "Server"
+                        + ChatColor.DARK_GRAY + "] "
+                        + ChatColor.GRAY + "Teleporting to "
+                        + ChatColor.YELLOW + "Spawn"
+                        + ChatColor.GRAY + "...");
 
             } else {
 
-                player.sendMessage(ChatColor.RED + "There is no spawnpoint set :(");
+                player.sendMessage(ChatColor.DARK_GRAY + "["
+                        + ChatColor.AQUA + "Server"
+                        + ChatColor.DARK_GRAY + "] "
+                        + ChatColor.RED + "Error: "
+                        + ChatColor.GRAY + "The spawn location has not been set yet.");
 
             }
 

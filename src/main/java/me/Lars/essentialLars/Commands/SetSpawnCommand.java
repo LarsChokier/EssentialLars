@@ -29,7 +29,11 @@ public class SetSpawnCommand implements CommandExecutor {
             plugin.getConfig().set("spawn", location);
             plugin.saveConfig();
 
-            player.sendMessage(ChatColor.GOLD + "Spawn has been set!");
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.GREEN + "Success: "
+                    + ChatColor.GRAY + "The server spawn has been set.");
 
         }else {
             System.out.println("Only players can execute this command!");

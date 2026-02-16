@@ -2,3 +2,8 @@ name: EssentialLars
 version: '1.0-SNAPSHOT'
 main: me.Lars.essentialLars.EssentialLars
 api-version: '1.21'
+commands:
+  setspawn:
+    description: set server spawn
+  spawn:
+    description: Teleport to spawn
