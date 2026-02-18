@@ -2,6 +2,8 @@ name: EssentialLars
 version: '1.0-SNAPSHOT'
 main: me.Lars.essentialLars.EssentialLars
 api-version: '1.21'
+description: A lightweight essentials-style plugin created by Lars, featuring homes, gamemodes, and spawn utilities.
+
 
 commands:
   setspawn:
@@ -37,3 +39,18 @@ commands:
     usage: "/gmsp [player]"
     aliases: [gm3]
     permission: EssentialLars.gamemode.spectator
+
+  sethome:
+    description: Set a home for yourself
+    usage: "/sethome <name>"
+    permission: EssentialLars.home.set
+
+  home:
+    description: Teleport to one of your homes
+    usage: "/home <name>"
+    permission: EssentialLars.home.use
+
+  delhome:
+    description: Delete one of your homes
+    usage: "/delhome <name>"
+    permission: EssentialLars.home.delete

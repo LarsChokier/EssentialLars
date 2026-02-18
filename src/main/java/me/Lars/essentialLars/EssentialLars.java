@@ -23,5 +23,10 @@ public final class EssentialLars extends JavaPlugin {
         getCommand("gms").setExecutor(new gmsCommand());
         getCommand("gmsp").setExecutor(new gmspCommand());
         getCommand("gma").setExecutor(new gmaCommand());
+
+        //===HOMES===
+        getCommand("sethome").setExecutor(new SetHomeCommand(this));
+        getCommand("home").setExecutor(new HomeCommand(this));
+        getCommand("delhome").setExecutor(new DelHomeCommand(this));
     }
 }
