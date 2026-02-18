@@ -1,7 +1,7 @@
 package me.Lars.essentialLars.Commands;
 
 import me.Lars.essentialLars.EssentialLars;
-import org.bukkit.ChatColor;
+import me.Lars.essentialLars.Util.Messages;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,19 +20,14 @@ public class SetHomeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can execute this command!");
+            sender.sendMessage(Messages.error("Only players can execute this command."));
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length != 1) {
-            player.sendMessage(ChatColor.DARK_GRAY + "["
-                    + ChatColor.AQUA + "Server"
-                    + ChatColor.DARK_GRAY + "] "
-                    + ChatColor.RED + "Error: "
-                    + ChatColor.GRAY + "Incorrect usage. Use: "
-                    + ChatColor.YELLOW + "/sethome <name>");
+            player.sendMessage(Messages.error("Incorrect usage. Use: /sethome <name>"));
             return true;
         }
 
@@ -42,13 +37,7 @@ public class SetHomeCommand implements CommandExecutor {
         plugin.getConfig().set("homes." + player.getName() + "." + homeName, loc);
         plugin.saveConfig();
 
-        player.sendMessage(ChatColor.DARK_GRAY + "["
-                + ChatColor.AQUA + "Server"
-                + ChatColor.DARK_GRAY + "] "
-                + ChatColor.GREEN + "Success: "
-                + ChatColor.GRAY + "Home "
-                + ChatColor.YELLOW + homeName
-                + ChatColor.GRAY + " has been set.");
+        player.sendMessage(Messages.positive("Home " + homeName + " has been set."));
 
         return true;
     }

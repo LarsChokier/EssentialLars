@@ -1,12 +1,12 @@
 package me.Lars.essentialLars.Commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import me.Lars.essentialLars.Util.Messages;
 
 public class gmcCommand implements CommandExecutor {
 
@@ -17,7 +17,7 @@ public class gmcCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
             if (!(sender instanceof Player)) {
-                sender.sendMessage("Only players can execute this command!");
+                sender.sendMessage(Messages.error("Only players can execute this command."));
                 return true;
             }
 
@@ -26,13 +26,7 @@ public class gmcCommand implements CommandExecutor {
             if (args.length == 0){
 
                 player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "creative"
-                        + ChatColor.GRAY + ".");
+                player.sendMessage(Messages.positive("Your gamemode has been changed to creative."));
 
             }else if (args.length == 1){
 
@@ -41,46 +35,19 @@ public class gmcCommand implements CommandExecutor {
                 Player target = Bukkit.getPlayer(playerName);
 
                 if (target == null) {
-                    player.sendMessage(ChatColor.DARK_GRAY + "["
-                            + ChatColor.AQUA + "Server"
-                            + ChatColor.DARK_GRAY + "] "
-                            + ChatColor.RED + "Error: "
-                            + ChatColor.GRAY + "Player "
-                            + ChatColor.YELLOW + playerName
-                            + ChatColor.GRAY + " is not online.");
+                    player.sendMessage(Messages.error("Player " + playerName + " is not online."));
                     return true;
                 }
 
                 target.setGameMode(GameMode.CREATIVE);
 
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "You changed "
-                        + ChatColor.YELLOW + target.getName()
-                        + ChatColor.GRAY + "'s gamemode to "
-                        + ChatColor.YELLOW + "creative"
-                        + ChatColor.GRAY + ".");
+                player.sendMessage(Messages.positive("You changed " + target.getName() + "'s gamemode to creative."));
 
-                target.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "creative"
-                        + ChatColor.GRAY + " by "
-                        + ChatColor.YELLOW + player.getName()
-                        + ChatColor.GRAY + ".");
+                target.sendMessage(Messages.positive("Your gamemode has been changed to creative by " + player.getName() + "."));
 
             }else {
 
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.RED + "Error: "
-                        + ChatColor.GRAY + "Incorrect usage. Use: "
-                        + ChatColor.YELLOW + "/gmc <PlayerName>");
+                player.sendMessage(Messages.error("Incorrect usage. Use: /gmc <PlayerName>"));
 
             }
             return true;

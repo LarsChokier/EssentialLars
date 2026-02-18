@@ -1,7 +1,7 @@
 package me.Lars.essentialLars.Commands;
 
 import me.Lars.essentialLars.EssentialLars;
-import org.bukkit.ChatColor;
+import me.Lars.essentialLars.Util.Messages;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,19 +20,14 @@ public class HomeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can execute this command!");
+            sender.sendMessage(Messages.error("Only players can execute this command."));
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length != 1) {
-            player.sendMessage(ChatColor.DARK_GRAY + "["
-                    + ChatColor.AQUA + "Server"
-                    + ChatColor.DARK_GRAY + "] "
-                    + ChatColor.RED + "Error: "
-                    + ChatColor.GRAY + "Incorrect usage. Use: "
-                    + ChatColor.YELLOW + "/home <name>");
+            player.sendMessage(Messages.error("Incorrect usage. Use: /home <name>"));
             return true;
         }
 
@@ -42,24 +37,13 @@ public class HomeCommand implements CommandExecutor {
         Location home = plugin.getConfig().getLocation(path);
 
         if (home == null) {
-            player.sendMessage(ChatColor.DARK_GRAY + "["
-                    + ChatColor.AQUA + "Server"
-                    + ChatColor.DARK_GRAY + "] "
-                    + ChatColor.RED + "Error: "
-                    + ChatColor.GRAY + "Home "
-                    + ChatColor.YELLOW + homeName
-                    + ChatColor.GRAY + " does not exist.");
+            player.sendMessage(Messages.error("Home " + homeName + " does not exist."));
             return true;
         }
 
         player.teleport(home);
 
-        player.sendMessage(ChatColor.DARK_GRAY + "["
-                + ChatColor.AQUA + "Server"
-                + ChatColor.DARK_GRAY + "] "
-                + ChatColor.GRAY + "Teleporting to home "
-                + ChatColor.YELLOW + homeName
-                + ChatColor.GRAY + "...");
+        player.sendMessage(Messages.positive("Teleporting to home " + homeName + "..."));
 
         return true;
     }

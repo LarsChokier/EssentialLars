@@ -1,7 +1,7 @@
 package me.Lars.essentialLars.Listeners;
 
 import me.Lars.essentialLars.EssentialLars;
-import org.bukkit.ChatColor;
+import me.Lars.essentialLars.Util.Messages;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +28,7 @@ public class SpawnListeners implements Listener {
             if (location != null){
 
                 player.teleport(location);
-                player.sendMessage(ChatColor.GOLD + "You have been teleported to spawn point!");
+                player.sendMessage(Messages.positive("You have been teleported to spawn."));
 
             }
 
@@ -44,11 +44,11 @@ public class SpawnListeners implements Listener {
         if (location != null){
 
             e.setRespawnLocation(location);
-            player.sendMessage(ChatColor.GOLD + "You have been teleported to spawn point!");
+            player.sendMessage(Messages.positive("You have been teleported to spawn."));
 
         }else {
 
-            player.sendMessage(ChatColor.RED + "No spawn Location found");
+            player.sendMessage(Messages.error("No spawn location found."));
 
         }
     }

@@ -1,7 +1,7 @@
 package me.Lars.essentialLars.Commands;
 
 import me.Lars.essentialLars.EssentialLars;
-import org.bukkit.ChatColor;
+import me.Lars.essentialLars.Util.Messages;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +21,7 @@ public class SetSpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can execute this command!");
+            sender.sendMessage(Messages.error("Only players can execute this command."));
             return true;
         }
 
@@ -32,11 +32,7 @@ public class SetSpawnCommand implements CommandExecutor {
         plugin.getConfig().set("spawn", location);
         plugin.saveConfig();
 
-        player.sendMessage(ChatColor.DARK_GRAY + "["
-                + ChatColor.AQUA + "Server"
-                + ChatColor.DARK_GRAY + "] "
-                + ChatColor.GREEN + "Success: "
-                + ChatColor.GRAY + "The server spawn has been set.");
+        player.sendMessage(Messages.positive("The server spawn has been set."));
 
         return true;
     }
