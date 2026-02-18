@@ -16,61 +16,73 @@ public class gmsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender instanceof Player){
-            Player player = (Player) sender;
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can execute this command!");
+            return true;
+        }
 
-            if (args.length == 0){
+        Player player = (Player) sender;
 
-                player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "survival"
-                        + ChatColor.GRAY + ".");
+        if (args.length == 0){
 
-            }else if (args.length == 1){
+            player.setGameMode(GameMode.SURVIVAL);
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.GREEN + "Success: "
+                    + ChatColor.GRAY + "Your gamemode has been changed to "
+                    + ChatColor.YELLOW + "survival"
+                    + ChatColor.GRAY + ".");
 
-                String playerName = args[0];
+        }else if (args.length == 1){
 
-                Player target = Bukkit.getPlayer(playerName);
+            String playerName = args[0];
 
-                target.setGameMode(GameMode.SURVIVAL);
+            Player target = Bukkit.getPlayer(playerName);
 
-
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "You changed "
-                        + ChatColor.YELLOW + target.getName()
-                        + ChatColor.GRAY + "'s gamemode to "
-                        + ChatColor.YELLOW + "survival"
-                        + ChatColor.GRAY + ".");
-
-                target.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GREEN + "Success: "
-                        + ChatColor.GRAY + "Your gamemode has been changed to "
-                        + ChatColor.YELLOW + "survival"
-                        + ChatColor.GRAY + " by "
-                        + ChatColor.YELLOW + player.getName()
-                        + ChatColor.GRAY + ".");
-
-            }else {
-
+            if (target == null) {
                 player.sendMessage(ChatColor.DARK_GRAY + "["
                         + ChatColor.AQUA + "Server"
                         + ChatColor.DARK_GRAY + "] "
                         + ChatColor.RED + "Error: "
-                        + ChatColor.GRAY + "Incorrect usage. Use: "
-                        + ChatColor.YELLOW + "/gms <PlayerName>");
-
-
+                        + ChatColor.GRAY + "Player "
+                        + ChatColor.YELLOW + playerName
+                        + ChatColor.GRAY + " is not online.");
+                return true;
             }
+
+            target.setGameMode(GameMode.SURVIVAL);
+
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.GREEN + "Success: "
+                    + ChatColor.GRAY + "You changed "
+                    + ChatColor.YELLOW + target.getName()
+                    + ChatColor.GRAY + "'s gamemode to "
+                    + ChatColor.YELLOW + "survival"
+                    + ChatColor.GRAY + ".");
+
+            target.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.GREEN + "Success: "
+                    + ChatColor.GRAY + "Your gamemode has been changed to "
+                    + ChatColor.YELLOW + "survival"
+                    + ChatColor.GRAY + " by "
+                    + ChatColor.YELLOW + player.getName()
+                    + ChatColor.GRAY + ".");
+
+        }else {
+
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.RED + "Error: "
+                    + ChatColor.GRAY + "Incorrect usage. Use: "
+                    + ChatColor.YELLOW + "/gms <PlayerName>");
+
         }
-        return false;
+        return true;
     }
 }

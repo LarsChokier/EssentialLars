@@ -19,35 +19,31 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender instanceof Player){
-
-            Player player = (Player) sender;
-
-            Location location = plugin.getConfig().getLocation("spawn");
-
-            if (location != null){
-
-                player.teleport(location);
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.GRAY + "Teleporting to "
-                        + ChatColor.YELLOW + "Spawn"
-                        + ChatColor.GRAY + "...");
-
-            } else {
-
-                player.sendMessage(ChatColor.DARK_GRAY + "["
-                        + ChatColor.AQUA + "Server"
-                        + ChatColor.DARK_GRAY + "] "
-                        + ChatColor.RED + "Error: "
-                        + ChatColor.GRAY + "The spawn location has not been set yet.");
-
-            }
-
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can execute this command!");
+            return true;
         }
 
-        return false;
+        Player player = (Player) sender;
+        Location location = plugin.getConfig().getLocation("spawn");
+
+        if (location != null){
+            player.teleport(location);
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.GRAY + "Teleporting to "
+                    + ChatColor.YELLOW + "Spawn"
+                    + ChatColor.GRAY + "...");
+        } else {
+            player.sendMessage(ChatColor.DARK_GRAY + "["
+                    + ChatColor.AQUA + "Server"
+                    + ChatColor.DARK_GRAY + "] "
+                    + ChatColor.RED + "Error: "
+                    + ChatColor.GRAY + "The spawn location has not been set yet.");
+        }
+
+        return true;
     }
 }
 

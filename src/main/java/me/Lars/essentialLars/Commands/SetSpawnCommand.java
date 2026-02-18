@@ -20,26 +20,25 @@ public class SetSpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender instanceof Player){
-            Player player = (Player) sender;
-
-            Location location = player.getLocation();
-
-            //Save location
-            plugin.getConfig().set("spawn", location);
-            plugin.saveConfig();
-
-            player.sendMessage(ChatColor.DARK_GRAY + "["
-                    + ChatColor.AQUA + "Server"
-                    + ChatColor.DARK_GRAY + "] "
-                    + ChatColor.GREEN + "Success: "
-                    + ChatColor.GRAY + "The server spawn has been set.");
-
-        }else {
-            System.out.println("Only players can execute this command!");
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can execute this command!");
+            return true;
         }
 
-        return false;
+        Player player = (Player) sender;
+        Location location = player.getLocation();
+
+        // Save location
+        plugin.getConfig().set("spawn", location);
+        plugin.saveConfig();
+
+        player.sendMessage(ChatColor.DARK_GRAY + "["
+                + ChatColor.AQUA + "Server"
+                + ChatColor.DARK_GRAY + "] "
+                + ChatColor.GREEN + "Success: "
+                + ChatColor.GRAY + "The server spawn has been set.");
+
+        return true;
     }
 }
 

@@ -2,7 +2,6 @@ package me.Lars.essentialLars.Commands;
 
 import me.Lars.essentialLars.EssentialLars;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +25,7 @@ public class DelHomeCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (args.length == 0) {
+        if (args.length != 1) {
             player.sendMessage(ChatColor.DARK_GRAY + "["
                     + ChatColor.AQUA + "Server"
                     + ChatColor.DARK_GRAY + "] "

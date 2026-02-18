@@ -10,6 +10,7 @@ commands:
     description: Set the server spawn
     usage: "/setspawn"
     permission: EssentialLars.spawn.set
+    default: op
 
   spawn:
     description: Teleport to spawn
@@ -21,24 +22,28 @@ commands:
     usage: "/gmc [player]"
     aliases: [gm1]
     permission: EssentialLars.gamemode.creative
+    default: op
 
   gms:
     description: Update your own or someone else's gamemode to survival
     usage: "/gms [player]"
     aliases: [gm0]
     permission: EssentialLars.gamemode.survival
+    default: op
 
   gma:
     description: Update your own or someone else's gamemode to adventure
     usage: "/gma [player]"
     aliases: [gm2]
     permission: EssentialLars.gamemode.adventure
+    default: op
 
   gmsp:
     description: Update your own or someone else's gamemode to spectator
     usage: "/gmsp [player]"
     aliases: [gm3]
     permission: EssentialLars.gamemode.spectator
+    default: op
 
   sethome:
     description: Set a home for yourself
